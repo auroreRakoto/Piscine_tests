@@ -2,20 +2,20 @@
 
 void	assert_str(char *expected, char *actual, char *msg)
 {
-	if (strcmp(expected, actual) == 0)
+	if ((expected == NULL && actual == NULL) || strcmp(expected, actual) == 0)
 	{
-		printf("[PASS] %s\n", msg);
+		printf(GREEN "[PASS] %s" RESET, msg);
 	}
 	else
 	{
-		printf("[FAIL] %s\nExpected Output: %s\nFunction Output: %s\n", msg, expected, actual);
+		printf(RED "[FAIL] %sExpected Output: %s\nFunction Output: %s\n\n" RESET, msg, expected, actual);
 	}
 }
 
 void assert_int(int expected, int actual, char *msg)
 {
 	if (expected == actual)
-		printf("[PASS] %s\n", msg);
+		printf(GREEN "[PASS] %s" RESET, msg);
 	else
-		printf("[FAIL] %s\nExpected Output: %d\nFunction Output: %d\n", msg, epected, actual);
+		printf(RED "[FAIL] %sExpected Output: %d\nFunction Output: %d\n\n" RESET, msg, expected, actual);
 }

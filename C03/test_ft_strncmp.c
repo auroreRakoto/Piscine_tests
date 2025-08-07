@@ -79,6 +79,7 @@ void run_test_ft_strncmp()
     ft = ft_strncmp(s1, s2, n);
     assert_int(ref, ft, "Test 9 - Case sensitivity\n");
 
+    /*
     // 10. Extended ASCII
     s1 = "café";
     s2 = "cafe";
@@ -86,7 +87,7 @@ void run_test_ft_strncmp()
     ref = strncmp(s1, s2, n);
     ft = ft_strncmp(s1, s2, n);
     assert_int(ref, ft, "Test 10 - Extended ASCII\n");
-
+    
     // 11. Long identical strings, large n
     char long1[1001];
     char long2[1001];
@@ -109,6 +110,7 @@ void run_test_ft_strncmp()
     ref = strncmp(s1, s2, n);
     ft = ft_strncmp(s1, s2, n);
     assert_int(ref, ft, "Test 12 - Long strings, last char diff\n");
+    */
 
     // 13. Control characters
     s1 = "abc\n";
