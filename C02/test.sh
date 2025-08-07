@@ -1,5 +1,6 @@
 #DIR_PATH="../C02"
-DIR_PATH="../../C02"
+#DIR_PATH="../../C02"
+DIR_PATH=".."
 TEST_FILES="test_ft_strcpy.c \
     test_ft_strncpy.c \
     test_ft_str_is_alpha.c \
