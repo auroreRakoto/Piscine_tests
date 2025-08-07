@@ -55,5 +55,7 @@ void run_test_ft_print_memory()
     size = sizeof(data6);
     printf(ORANGE "Test 6 - Binary-looking data:\n" RESET);
     ft_print_memory(addr, size);
-    printf("\n\n");
+    printf("\n\n");	
 }
+
+
