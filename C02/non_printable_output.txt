@@ -1,0 +1,4 @@
+hello
+Hello\[Worldhello
+\Tabbedhello
+NormalStringhello
