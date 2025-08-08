@@ -7,4 +7,6 @@ TEST_FILES="test_ft_atoi.c \
     test_ft_putnbr_base.c \
     test_ft_atoi_base.c"
 
-gcc -Wall -Wextra -Werror main.c assert.c ${EX_FILES} ${TEST_FILES} && ./a.exe
+norminette ${EX_FILES}
+#gcc -Wall -Wextra -Werror main.c assert.c ${EX_FILES} ${TEST_FILES} && ./a.exe
+cc -Wall -Wextra -Werror main.c assert.c ${EX_FILES} ${TEST_FILES} && ./a.out
