@@ -1,9 +1,21 @@
-int ft_verif_base2()
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_atoi_base.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aurrakot <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/08 09:28:19 by aurrakot          #+#    #+#             */
+/*   Updated: 2025/08/08 09:28:21 by aurrakot         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+int	ft_verif_base2(void)
 {
 	return (1);
 }
 
-int ft_is_in_base(char c, char* base)
+int	ft_is_in_base(char c, char *base)
 {
 	int	i;
 
@@ -17,21 +29,21 @@ int ft_is_in_base(char c, char* base)
 	return (-1);
 }
 
-int ft_is_space(char c)
+int	ft_is_space(char c)
 {
 	if (c == ' ')
 		return (1);
-	if (c == 't')
+	if (c == '\t')
 		return (1);
-	if (c == 'n')
+	if (c == '\n')
 		return (1);
-	if (c == 'r')
+	if (c == '\r')
 		return (1);
-	if (c == 'v')
+	if (c == '\v')
 		return (1);
-	if (c == 'f')
+	if (c == '\f')
 		return (1);
-    return (0);
+	return (0);
 }
 
 int	ft_convert(char c, char *base)
@@ -53,7 +65,7 @@ int	ft_convert(char c, char *base)
 	return (res);
 }
 
-int ft_atoi_base(char *str, char *base)
+int	ft_atoi_base(char *str, char *base)
 {
 	int	i;
 	int	n;
@@ -74,8 +86,7 @@ int ft_atoi_base(char *str, char *base)
 	}
 	while (str[i] && ft_is_in_base(str[i], base) != -1)
 	{
-		//printf("testing index : %d, base [n] : %d\n", ft_is_in_base(str[i], base), base[ft_is_in_base(str[i], base)]);
-		res = (res * 10) + ft_convert(str[i], base);
+		res = (res * 10) + ft_is_in_base(str[i], base);
 		i++;
 	}
 	return (res * n);

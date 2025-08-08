@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putnbr_base.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aurrakot <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/08 09:28:10 by aurrakot          #+#    #+#             */
+/*   Updated: 2025/08/08 09:28:11 by aurrakot         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <unistd.h>
 
 int	ft_str_len1(char *base)
@@ -36,7 +48,7 @@ int	ft_verif_base(char *base)
 
 void	ft_putnbr_base(int nbr, char *base)
 {
-	int		len;
+	int			len;
 	long long	n;
 
 	if (!base)
