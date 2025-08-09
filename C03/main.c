@@ -27,12 +27,10 @@ int	main(int ac, char **av)
 		run_test_ft_strstr();
 		printf("\n\n");
 	}
-	/*
 	if (ac < 2 || strcmp(av[1], "5") == 0)
 	{
 		run_test_ft_strlcat();
 		printf("\n\n");
 	}
-	*/
 	return (0);
 }

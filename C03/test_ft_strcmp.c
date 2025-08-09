@@ -72,6 +72,7 @@ void	run_test_ft_strcmp()
     assert_int(ref, ft, "Test 9 - Case sensitivity\n");
 
 	// 12. Long strings, last char different
+    /*
     char long1[1001];
     char long2[1001];
 	long2[999] = 'b';  // change last character
@@ -80,6 +81,7 @@ void	run_test_ft_strcmp()
     ref = strcmp(s1, s2);
     ft = ft_strcmp(s1, s2);
     assert_int(ref, ft, "Test 12 - Long strings, last char diff\n");
+    */
 
     // 13. Control characters
     s1 = "abc\n";

@@ -1,5 +1,5 @@
 #DIR_PATH="../../temp_C03/"
-DIR_PATH="../exos/temp_C03/"
+DIR_PATH="../"
 TEST_PATH="test_ft_"
 
 TEST_FILES="test_ft_strcmp.c \
@@ -11,6 +11,6 @@ TEST_FILES="test_ft_strcmp.c \
 
 EX_FILES="${DIR_PATH}ex*/*.c"
 
-#cc -Wall -Wextra -Werror -lbsd main.c ${TEST_FILES} ${EX_FILES} -o testing ./testing.exe
-gcc -Wall -Wextra -Werror main.c assert.c ${TEST_FILES} ${EX_FILES} -o testing && ./testing.exe
+cc -Wall -Wextra -Werror -lbsd main.c assert.c ${TEST_FILES} ${EX_FILES} -o testing && ./testing
+#gcc -Wall -Wextra -Werror main.c assert.c ${TEST_FILES} ${EX_FILES} -o testing && ./testing.exe
 #gcc main.c assert.c ${TEST_FILES} ${EX_FILES} -o testing && ./testing.exe && echo "NO FLAG"

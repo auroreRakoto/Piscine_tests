@@ -3,7 +3,7 @@
 
 # include <stdio.h>
 # include <string.h>
-//# include <bsd/string.h>
+# include <bsd/string.h>
 
 # define RED "\033[0;31m"
 # define GREEN "\033[0;32m"
