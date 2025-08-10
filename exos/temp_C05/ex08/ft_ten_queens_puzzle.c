@@ -1,41 +1,66 @@
-#include <stdio.h>
+#include <unistd.h>
 
-char *checking(char *res)
+int	ft_abs(int a)
 {
-	int	index;
-
-	index = res[10] - 48;
-	res[10] += 1;
-	if (index == 3)
-		res = checking(res);
-	printf("sefe\n");
-	printf("index : %d, res : %s\n", index, res);
-	//while (index < 1)
-	//{
-		//printf("index : %d, res : %s\n", index, res);
-	//	res = checking(res);
-	//}
-	return (res);
+	if (a < 0)
+		return (-a);
+	return (a);
 }
 
+int	is_case_valid(int index, char *str)
+{
+	int	i;
+
+	i = 0;
+	while (i < index)
+	{
+		if (ft_abs(str[i] - str[index]) == ft_abs(i - index) || str[i] - str[index] == 0)
+			return (0);	
+		i++;
+	}
+	return (1);
+}
+
+int	checking(int index, char *str, int counter)
+{
+	int	i;
+
+	i = 0;
+	if (index == 10)
+	{
+		write(1, str, 10);
+		write(1, "\n", 1);
+		counter++;
+		return (counter);
+	}
+	while (i < 10)
+	{
+		str[index] = i + '0';
+		if (is_case_valid(index, str))
+		{
+			counter = checking(index + 1, str, counter);
+		}
+		i++;
+	}
+	return (counter);
+}
 
 int	ft_ten_queens_puzzle(void)
 {
-	int		i;
-	char	res[11];
+	char	str[10];
+	int		res;
 
-    i = 0;
-	res = "aaaaaaaaaa0"
-	/*while (i < 10)
-	{
-		res[0] = i + 48;
-		i++;
-	}*/
-	res[10] = '0';
-	checking(res);
+	str[10] = '\0';
+	res = checking(0, str, 0);
+	return (res);
+	
 }
 
+#include <stdio.h>
 int	main()
 {
-	ft_ten_queens_puzzle();
+	int	res;
+
+	res = ft_ten_queens_puzzle();
+	printf("res = %d\n", res);
 }
