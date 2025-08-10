@@ -81,9 +81,9 @@ void	run_test_ft_atoi()
 	msg = "Test 15 - Underflow below INT_MIN";
 	assert_int(atoi(s), ft_atoi(s), msg);
 
-	// Test 16 - Long number (stop at first invalid)
-	s = "12345678901234567890";
-	msg = "Test 16 - Very long number";
+	// Test 16 - Multiple signs (invalid)
+	s = "-++-+---123";
+	msg = "Test 16 - Multiple negative signs (invalid)";
 	assert_int(atoi(s), ft_atoi(s), msg);
 
 	// Test 17 - Spaces after number

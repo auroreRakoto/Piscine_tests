@@ -1,4 +1,6 @@
-DIR_PATH="../exos/temp_C04/ex"
+#DIR_PATH="../exos/temp_C04/ex"
+DIR_PATH="../../C04/ex"
+#DIR_PATH="../ex"
 
 EX_FILES="${DIR_PATH}03/ft_atoi.c \
     ${DIR_PATH}04/ft_putnbr_base.c \

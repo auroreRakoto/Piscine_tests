@@ -19,19 +19,20 @@ char *checking(char *res)
 }
 
 
-int ft_ten_queens_puzzle(void)
+int	ft_ten_queens_puzzle(void)
 {
-    int		i;
+	int		i;
 	char	res[11];
 
     i = 0;
-	while (i < 10)
+	res = "aaaaaaaaaa0"
+	/*while (i < 10)
 	{
-		res[i] = i + 48;
+		res[0] = i + 48;
 		i++;
-	}
+	}*/
 	res[10] = '0';
-    checking(res);
+	checking(res);
 }
 
 int	main()
