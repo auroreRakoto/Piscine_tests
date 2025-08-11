@@ -1,15 +1,32 @@
-#DIR_PATH="../exos/temp_C05/ex"
-DIR_PATH="../ex"
+#!/bin/bash
 
-EX_FILES="${DIR_PATH}01/ft_recursive_factorial.c \
-    ${DIR_PATH}06/ft_is_prime.c \
-    ${DIR_PATH}07/ft_find_next_prime.c \
-    ${DIR_PATH}08/ft_ten_queens_puzzle.c"
-TEST_FILES="test_ft_recursive_factorial.c \
-    test_ft_is_prime.c \
-    test_ft_find_next_prime.c \
-    test_ft_ten_queens_puzzle.c"
+# Define the DIR_PATH (you can pass it as an argument or use a default)
+DIR_PATH=${1:-"../../C05/ex*"}
+#DIR_PATH="../../C05/ex*"
 
-norminette ${EX_FILES}
-#gcc -Wall -Wextra -Werror main.c assert.c ${EX_FILES} ${TEST_FILES} && ./a.exe
-cc -Wall -Wextra -Werror main.c assert.c ${EX_FILES} ${TEST_FILES} && ./a.out
+# Find all .c files in DIR_PATH (both exercises and tests)
+EX_FILES=$(find $DIR_PATH -name "*.c")
+TEST_FILES=$(find . -name "test_*.c")
+
+# Run norminette (coding standard check)
+echo "Running norminette ..."
+norminette $EX_FILES
+
+# Compile the code and tests
+echo "Compiling code..."
+cc -Wall -Wextra -Werror main.c assert.c $EX_FILES $TEST_FILES -o test
+
+# If compilation is successful, run the tests with Valgrind
+if [ $? -eq 0 ]; then
+    echo "Compilation successful! Running tests under Valgrind..."
+    valgrind --leak-check=full --error-exitcode=42 ./test
+    
+    # Check Valgrind's exit code to determine if there were memory leaks
+    if [ $? -eq 42 ]; then
+        echo "💥 Memory leak detected!"
+    else
+        echo "✅ No leaks detected."
+    fi
+else
+    echo "❌ Compilation failed!"
+fi
