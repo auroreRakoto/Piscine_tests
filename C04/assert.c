@@ -15,7 +15,7 @@ void	assert_str(char *expected, char *actual, char *msg)
 void	assert_int(int expected, int actual, char *msg)
 {
 	if (expected == actual)
-		printf(GREEN "[PASS] %s\nExpected Output: %s\nFunction Output: %s\n" RESET, msg, expected, actual);
+		printf(GREEN "[PASS] %s\nExpected Output: %d\nFunction Output: %d\n" RESET, msg, expected, actual);
 	else
 		printf(RED "[FAIL] %s\nExpected Output: %d\nFunction Output: %d\n\n" RESET, msg, expected, actual);
 }
