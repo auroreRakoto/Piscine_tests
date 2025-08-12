@@ -52,8 +52,8 @@ norminette "${EX_FILES[@]}" || true
 
 # Compilation
 echo "⚙️  Compilation..."
-cc -Wall -Wextra -Werror "${TEST_FILES[@]}" "${EX_FILES[@]}" -o test
-#gcc -Wall -Wextra -Werror "${TEST_FILES[@]}" "${EX_FILES[@]}" -o test
+#cc -Wall -Wextra -Werror "${TEST_FILES[@]}" "${EX_FILES[@]}" -o test
+gcc -Wall -Wextra -Werror "${TEST_FILES[@]}" "${EX_FILES[@]}" -o test
 
 # Exécution sous Valgrind si dispo
 if command -v valgrind >/dev/null 2>&1; then
