@@ -12,7 +12,6 @@ void    ft_solve(char **inputs, int size);
 int	main(int ac, char **av)
 {
 	char	**inputs;
-	char	**grid;
 	int		size;
 
 	if (ac == 2)

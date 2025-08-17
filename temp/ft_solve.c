@@ -15,8 +15,8 @@ void    ft_putchar(char c);
 void    ft_putnbr(int n);
 int     ft_atoi_safe(const char *s);
 void	print_grid(int **g, int n);
-int		check_col_vis(int **g, int n, int c, int *pos);
-int		check_row_vis(int **g, int n, int r, int *pos);
+int		check_col_vis(int **g, int n, int c, int **pos);
+int		check_row_vis(int **g, int n, int r, int **pos);
 int		ok_uniq(int **g, int n, int *coord, int val);
 
 static int	backtrack(int **g, int n, int *coord, int **pos)
@@ -34,21 +34,24 @@ static int	backtrack(int **g, int n, int *coord, int **pos)
 		if (ok_uniq(g, n, coord, val))
 		{
 			g[coord[0]][coord[1]] = val;
-
 			if (coord[0] == n - 1)
+			{
 				if (!check_col_vis(g, n, coord[1], pos))
 				{
 					g[coord[0]][coord[1]] = 0;
 					val++;
 					continue;
 				}
+			}
 			if (coord[1] == n - 1)
+			{
 				if (!check_row_vis(g, n, coord[0], pos))
 				{
 					g[coord[0]][coord[1]] = 0;
 					val++;
 					continue;
 				}
+			}
 			if (backtrack(g, n, next, pos))
 				return (1);
 			g[coord[0]][coord[1]] = 0;
@@ -57,6 +60,7 @@ static int	backtrack(int **g, int n, int *coord, int **pos)
 	}
 	return (0);
 }
+
 
 static void free_grid(int **g, int n)
 {
@@ -105,7 +109,7 @@ void    ft_solve(char **inputs, int size)
 	int **g;
 	int **pos;
 	int r;
-	int	*coord;
+	int	coord[2];
 
 	g = (int **)malloc(sizeof(int *) * size);
 	if (!g)
@@ -170,6 +174,8 @@ void    ft_solve(char **inputs, int size)
 		free_grid(g, size);
 		return;
 	}
+	coord[0] = 0;
+	coord[1] = 0;
 	if (backtrack(g, size, coord, pos))
 		print_grid(g, size);
 	else

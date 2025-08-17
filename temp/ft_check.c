@@ -47,7 +47,7 @@ int check_row_vis(int **g, int n, int r, int **pos)
 	return (1);
 }
 
-int check_col_vis(int **g, int n, int c, const int *top, const int *bottom)
+int check_col_vis(int **g, int n, int c, int **pos)
 {
 	int *col;
 	int i, ok;
