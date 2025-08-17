@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include <unistd.h>
 
 void	ft_free_split(char **str)
 {
@@ -26,24 +27,6 @@ void	ft_free_split(char **str)
 		}
 		free(str);
 	}
-}
-
-int	ft_atoi(char *str)
-{
-	long int	i;
-	long int	n;
-	long int	res;
-
-	n = 1;
-	res = 0;
-	i = 0;
-	while (str[i] && (str[i] >= '0' && str[i] <= '9'))
-	{
-		res = (res * 10) + str[i] - '0';
-		i++;
-	}
-	res = n * res;
-	return (res);
 }
 
 int	ft_get_size(char **input)
@@ -84,4 +67,24 @@ int     ft_atoi_safe(const char *s)
     if (*s != '\0')
         return (-1);
     return (n);
+}
+
+void	print_grid(int **g, int n)
+{
+	int r, c;
+
+	r = 0;
+	while (r < n)
+	{
+		c = 0;
+		while (c < n)
+		{
+			ft_putnbr(g[r][c]);
+			if (c < n - 1)
+				write(1, " ", 1);
+			c++;
+		}
+		write(1, "\n", 1);
+		r++;
+	}
 }

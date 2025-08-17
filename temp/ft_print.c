@@ -21,13 +21,13 @@ void    print_solution(char **grid)
     int c;
 
     r = 0;
-    while (r < N)
+    while (r < 4)
     {
         c = 0;
-        while (c < N)
+        while (c < 4)
         {
             ft_putnbr(grid[r][c]);
-            if (c < N - 1)
+            if (c < 4 - 1)
                 write(1, " ", 1);
             c++;
         }
