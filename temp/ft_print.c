@@ -12,27 +12,26 @@
 
 #include <unistd.h>
 
-void        ft_putchar(char c);
-void        ft_putnbr(int n);
+void	ft_putchar(char c);
+void	ft_putnbr(int n);
 
-void    print_solution(char **grid)
+void	print_solution(char **grid)
 {
-    int r;
-    int c;
+	int	r;
+	int	c;
 
-    r = 0;
-    while (r < 4)
-    {
-        c = 0;
-        while (c < 4)
-        {
-            ft_putnbr(grid[r][c]);
-            if (c < 4 - 1)
-                write(1, " ", 1);
-            c++;
-        }
-        write(1, "\n", 1);
-        r++;
-    }
+	r = 0;
+	while (r < 4)
+	{
+		c = 0;
+		while (c < 4)
+		{
+			ft_putnbr(grid[r][c]);
+			if (c < 4 - 1)
+				write(1, " ", 1);
+			c++;
+		}
+		write(1, "\n", 1);
+		r++;
+	}
 }
-

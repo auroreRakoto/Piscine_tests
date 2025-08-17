@@ -7,7 +7,7 @@ char	**ft_split(char *str, char *charset);
 void	ft_run_rush01(char **input);
 void	ft_free_split(char **str);
 int		ft_get_size(char **input);
-void    ft_solve(char **inputs, int size);
+void	ft_solve(char **inputs, int size);
 
 int	main(int ac, char **av)
 {

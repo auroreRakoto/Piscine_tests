@@ -1,8 +1,10 @@
 #include <stdlib.h>
 
-int visible_lr(const int *line, int n)
+int	visible_lr(const int *line, int n)
 {
-	int i, max, seen;
+	int	i;
+	int	max;
+	int	seen;
 
 	max = 0;
 	seen = 0;
@@ -19,9 +21,11 @@ int visible_lr(const int *line, int n)
 	return (seen);
 }
 
-int visible_rl(const int *line, int n)
+int	visible_rl(const int *line, int n)
 {
-	int i, max, seen;
+	int	i;
+	int	max;
+	int	seen;
 
 	max = 0;
 	seen = 0;
@@ -38,7 +42,7 @@ int visible_rl(const int *line, int n)
 	return (seen);
 }
 
-int check_row_vis(int **g, int n, int r, int **pos)
+int	check_row_vis(int **g, int n, int r, int **pos)
 {
 	if (visible_lr(g[r], n) != pos[2][r])
 		return (0);
@@ -47,10 +51,11 @@ int check_row_vis(int **g, int n, int r, int **pos)
 	return (1);
 }
 
-int check_col_vis(int **g, int n, int c, int **pos)
+int	check_col_vis(int **g, int n, int c, int **pos)
 {
-	int *col;
-	int i, ok;
+	int	*col;
+	int	i;
+	int	ok;
 
 	col = (int *)malloc(sizeof(int) * n);
 	if (!col)
@@ -68,7 +73,7 @@ int check_col_vis(int **g, int n, int c, int **pos)
 
 int	ok_uniq(int **g, int n, int *coord, int val)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < n)

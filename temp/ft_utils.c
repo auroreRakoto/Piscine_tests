@@ -39,39 +39,42 @@ int	ft_get_size(char **input)
 	return (size / 4);
 }
 
-void    ft_putchar(char c)
+void	ft_putchar(char c)
 {
 	write(1, &c, 1);
 }
 
-void    ft_putnbr(int n)
+void	ft_putnbr(int n)
 {
-    char c;
-    if (n > 9) ft_putnbr(n / 10);
-    c = (char)('0' + (n % 10));
-    ft_putchar(c);
+	char	c;
+
+	if (n > 9)
+		ft_putnbr(n / 10);
+	c = (char)('0' + (n % 10));
+	ft_putchar(c);
 }
 
-int     ft_atoi_safe(const char *s)
+int	ft_atoi_safe(const char *s)
 {
-    int n;
+	int	n;
 
-    n = 0;
-    if (!s || !*s)
-        return (-1);
-    while (*s >= '0' && *s <= '9')
-    {
-        n = n * 10 + (*s - '0');
-        s++;
-    }
-    if (*s != '\0')
-        return (-1);
-    return (n);
+	n = 0;
+	if (!s || !*s)
+		return (-1);
+	while (*s >= '0' && *s <= '9')
+	{
+		n = n * 10 + (*s - '0');
+		s++;
+	}
+	if (*s != '\0')
+		return (-1);
+	return (n);
 }
 
 void	print_grid(int **g, int n)
 {
-	int r, c;
+	int	r;
+	int	c;
 
 	r = 0;
 	while (r < n)
