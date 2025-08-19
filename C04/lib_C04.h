@@ -12,9 +12,9 @@
 # define RESET "\033[0;0m"
 
 // TEST
-void			assert_str(char *expected, char *actual, char *msg);
-void			assert_int(int expected, int actual, char *msg);
-void			assert_self(int expected, int actual, char *msg);
+int			assert_str(char *expected, char *actual, char *msg);
+int			assert_int(int expected, int actual, char *msg);
+int			assert_self(int expected, int actual, char *msg);
 
 // EX03
 void			run_test_ft_atoi();

@@ -6,7 +6,7 @@ t_list	*ft_create_elem(void *data)
 
 	res = malloc(sizeof(t_list));
 	if (!res)
-		return (|NULL);
+		return (NULL);
 	res->data = data;
 	res->next = NULL;
 	return (res);
