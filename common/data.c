@@ -3,6 +3,135 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
+#include <unistd.h>
+
+int	ft_is_space(char c)
+{
+	if (c == ' ' || c == '\t' || c == '\n')
+		return (1);
+	if (c == '\r' || c == '\v' || c == '\f')
+		return (1);
+	return (0);
+}
+
+char	*ft_trim(char *s)
+{
+	int	i;
+
+	if (!s)
+		return (NULL);
+	while (*s && ft_is_space(*s))
+		s++;
+	i = 0;
+	while (s[i])
+		i++;
+	while (i > 0 && ft_is_space(s[i - 1]))
+	{
+		s[i - 1] = '\0';
+		i--;
+	}
+	return (s);
+}
+
+static int	has_digit(const char *s)
+{
+	int	i;
+
+	if (!s || !*s)
+		return (0);
+	i = 0;
+	if (s[i] == '+' || s[i] == '-')
+		i++;
+	if (s[i] < '0' || s[i] > '9')
+		return (0);
+	return (1);
+}
+
+int	safe_atoi(const char *s, int *out)
+{
+	long	res;
+	long	sg;
+	int		i;
+
+	if (!has_digit(s) || !out)
+		return (0);
+	i = 0;
+	sg = 1;
+	res = 0;
+	if (s[i] == '-' || s[i] == '+')
+	{
+		if (s[i] == '-')
+			sg = -1;
+		i++;
+	}
+	while (s[i] >= '0' && s[i] <= '9')
+	{
+		res = res * 10 + (s[i] - '0');
+		i++;
+	}
+	*out = (int)(res * sg);
+	return (1);
+}
+
+char	*find_arrow(char *s)
+{
+	int	i;
+
+	if (!s)
+		return (NULL);
+	i = 0;
+	while (s[i])
+	{
+		if (s[i] == '-' && s[i + 1] == '>')
+			return (s + i);
+		i++;
+	}
+	return (NULL);
+}
+
+int	parse_pair(char *line, int *a, int *b)
+{
+	char	*ar;
+	char	*lhs;
+	char	*rhs;
+
+	if (!line)
+		return (0);
+	ar = find_arrow(line);
+	if (!ar)
+		return (0);
+	*ar = '\0';
+	ar += 2;
+	lhs = ft_trim(line);
+	rhs = ft_trim(ar);
+	return (safe_atoi(lhs, a) && safe_atoi(rhs, b));
+}
+
+int	parse_triplet(char *line, int *x, int *p, int *b)
+{
+	char	*ar;
+	char	*lhs;
+	char	*rhs;
+	char	*mid;
+
+	if (!line)
+		return (0);
+	ar = find_arrow(line);
+	if (!ar)
+		return (0);
+	*ar = '\0';
+	ar += 2;
+	lhs = ft_trim(line);
+	rhs = ft_trim(ar);
+	mid = lhs;
+	while (*mid && !ft_is_space(*mid))
+		mid++;
+	if (*mid)
+		*mid++ = '\0';
+	mid = ft_trim(mid);
+	return (safe_atoi(lhs, x) && safe_atoi(mid, p) && safe_atoi(rhs, b));
+}
+
 
 static char *xstrdup(const char *s)
 {
