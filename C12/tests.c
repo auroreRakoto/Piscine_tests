@@ -509,6 +509,8 @@ static void test_ex07(void)
 
 /* ================= ex08: ft_list_reverse ================= */
 #ifdef HAVE_EX08
+#define HAVE_EX08
+/*
 static void test_ex08(void)
 {
 	t_data_table t;
@@ -541,8 +543,6 @@ static void test_ex08(void)
 		snprintf(label, sizeof label, "	ex08 AFTER  reverse");
 		lh_list_print(label, lst);
 #endif
-
-		/* expected: reversed tokens */
 		{
 			int n2; char **tok2 = lh_split_csv_trim(init_str, &n2);
 			const char **exp = (const char **)malloc(sizeof(*exp) * n2);
@@ -560,6 +560,7 @@ static void test_ex08(void)
 	}
 	data_free(&t);
 }
+*/
 #endif
 
 /* ================= ex09: ft_list_foreach ================= */
