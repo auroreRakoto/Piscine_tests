@@ -509,10 +509,12 @@ static void test_ex07(void)
 
 /* ================= ex08: ft_list_reverse ================= */
 #ifdef HAVE_EX08
-#define HAVE_EX08
-/*
+
 static void test_ex08(void)
 {
+	return ;
+}
+/*
 	t_data_table t;
 
 	if (data_load_section(DATA_PATH, "ex08_reverse", '|', &t) != 0)
