@@ -512,9 +512,6 @@ static void test_ex07(void)
 
 static void test_ex08(void)
 {
-	return ;
-}
-/*
 	t_data_table t;
 
 	if (data_load_section(DATA_PATH, "ex08_reverse", '|', &t) != 0)
@@ -562,7 +559,6 @@ static void test_ex08(void)
 	}
 	data_free(&t);
 }
-*/
 #endif
 
 /* ================= ex09: ft_list_foreach ================= */
@@ -1108,7 +1104,7 @@ void test_C12(void)
 	test_ex07();
 #endif
 #ifdef HAVE_EX08
-	//test_ex08();
+	test_ex08();
 #endif
 #ifdef HAVE_EX09
 	test_ex09();
