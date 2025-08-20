@@ -21,67 +21,60 @@ int  ft_strlen(char *str);
 int  ft_strcmp(char *s1, char *s2);
 #endif
 
-/* ================= ex01: strlen ================= */
-#ifdef HAVE_EX01
-static void test_ex01_strlen(void)
+/* ================= ex02: ft_split ================= */
+#ifdef HAVE_EX02
+static void test_ex02(void)
 {
-	t_data_table t; if (data_load_section(DATA_PATH,"ex01_strlen",'|',&t)!=0){ printf("WARNING: no data [ex01_strlen]\n"); return; }
-	for (int i=0;i<t.count;i++)
+	t_data_table t;
+
+	if (data_load_section(DATA_PATH, "ex05_split", '|', &t) != 0)
 	{
-		const char *s=t.rows[i].cols[0];
-		int want=atoi(t.rows[i].cols[1]);
-		char msg[160]; snprintf(msg,sizeof msg,"ex01 strlen(\"%s\")", *s?s:"(empty)");
-		assert_int_eq(ft_strlen((char*)(*s?s:"")), want, msg);
+		printf("WARNING: no data for [ex05_split] in %s\n", DATA_PATH);
+		return;
 	}
-	data_free(&t);
-}
-#endif
-
-/* ================= ex01: strcmp ================= */
-#ifdef HAVE_EX01
-static int sgn(int x){ return (x>0)-(x<0); }
-
-static void test_ex01_strcmp(void)
-{
-	t_data_table t; if (data_load_section(DATA_PATH,"ex01_strcmp",'|',&t)!=0){ printf("WARNING: no data [ex01_strcmp]\n"); return; }
-	for (int i=0;i<t.count;i++)
+	for (int i = 0; i < t.count; ++i)
 	{
-		const char *a=t.rows[i].cols[0], *b=t.rows[i].cols[1];
-		int want=atoi(t.rows[i].cols[2]);
-		char msg[160]; snprintf(msg,sizeof msg,"ex01 strcmp(\"%s\",\"%s\")", a,b);
-		assert_int_eq(sgn(ft_strcmp((char*)a,(char*)b)), want, msg);
-	}
-	data_free(&t);
-}
-#endif
+		char *str = (char *)t.rows[i].cols[0];
+		char *charset = (char *)t.rows[i].cols[1];
+		const char *exp_csv = t.rows[i].cols[2];
 
-/* ================= ex01: swap ================= */
-#ifdef HAVE_EX01
-static void test_ex01_swap(void)
-{
-	t_data_table t; if (data_load_section(DATA_PATH,"ex01_swap",'|',&t)!=0){ printf("WARNING: no data [ex01_swap]\n"); return; }
-	for (int i=0;i<t.count;i++)
-	{
-		int a = atoi(t.rows[i].cols[0]);
-		int b = atoi(t.rows[i].cols[1]);
-		int want_a = atoi(t.rows[i].cols[2]);
-		int want_b = atoi(t.rows[i].cols[3]);
+		int exp_n = 0;
+		char **exp = lh_split_csv_trim(exp_csv, &exp_n);
+
 #if TEST_VERBOSE
-		printf("ex01[%d] BEFORE swap a=%d b=%d\n", i, a, b);
+		printf("ex05[%d] BEFORE split \"%s\" by \"%s\"\n", i, str, charset);
 #endif
-		ft_swap(&a, &b);
+		char **out = ft_split(str, charset);
 #if TEST_VERBOSE
-		printf("ex01[%d] AFTER  swap a=%d b=%d\n", i, a, b);
+		printf("ex05[%d] AFTER  tokens:", i);
+		if (!out) printf(" (null)\n");
+		else {
+			printf(" [");
+			for (int k=0; out[k]; ++k){ if(k) printf(", "); printf("\"%s\"", out[k]); }
+			printf("]\n");
+		}
 #endif
-		assert_int_eq(a, want_a, "ex01 swap a");
-		assert_int_eq(b, want_b, "ex01 swap b");
+		/* count */
+		int n = 0; if (out) while (out[n]) ++n;
+		assert_int_eq(n, exp_n, "ex05 token count");
+		/* compare */
+		for (int k = 0; k < exp_n; ++k)
+			assert_str_eq(out[k], exp[k], "ex05 token matches");
+
+		/* free result */
+		if (out)
+		{
+			for (int k = 0; out[k]; ++k) free(out[k]);
+			free(out);
+		}
+		lh_free_tokens(exp, exp_n);
 	}
 	data_free(&t);
 }
 #endif
 
-/* ================= ex01: putstr / putchar (no-crash) ================= */
-#ifdef HAVE_EX01
+/* ================= ex02: ft_split ================= */
+#ifdef HAVE_EX02
 static void test_ex01_puts(void)
 {
 	t_data_table t; if (data_load_section(DATA_PATH,"ex01_putstr",'|',&t)!=0){ printf("WARNING: no data [ex01_putstr]\n"); return; }
@@ -108,6 +101,9 @@ void test_C09(void)
 	test_ex01_strcmp();
 	test_ex01_swap();
 	test_ex01_puts();
+#else
+#ifdef HAVE_EX02
+	test_ex02();
 #else
 	printf("C09: no ex01 sources detected; skipping function tests.\n");
 #endif
