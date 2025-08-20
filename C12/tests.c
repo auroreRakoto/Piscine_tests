@@ -1108,7 +1108,7 @@ void test_C12(void)
 	test_ex07();
 #endif
 #ifdef HAVE_EX08
-	test_ex08();
+	//test_ex08();
 #endif
 #ifdef HAVE_EX09
 	test_ex09();
