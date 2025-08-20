@@ -12,7 +12,7 @@ CFLAGS      := -Wall -Wextra -Werror
 NAME        := test_$(R)
 XF			?= *.out
 
-VERBOSE		?= 0
+VERBOSE		?= 1
 ASCII		?= 1
 
 # ---------- Where to find exercises ----------
