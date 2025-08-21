@@ -1,4 +1,7 @@
 #include "../common/assert.h"
+#include "../common/data.h"
+#include "../common/list_helpers.h"
+#include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
 
