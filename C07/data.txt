@@ -1,0 +1,58 @@
+[ex00_strdup]
+hello
+(empty)
+ABC
+
+[ex01_range]
+0|0|
+0|3|0,1,2
+-2|2|-2,-1,0,1
+5|3|
+
+[ex02_ultimate_range]
+0|0|
+0|3|0,1,2
+-2|2|-2,-1,0,1
+5|3|
+
+[ex03_strjoin]
+0|a,b,c|,|
+1|hello|,|hello
+3|a,b,c|,|a,b,c
+3|a,b,c|--|a--b--c
+2|foo,bar,baz| + |foo + bar
+
+[ex04_convert_base]
+1010|01|0123456789|10
+-2A|0123456789ABCDEF|01|-101010
+42|0123456789|0123456789ABCDEF|2A
+   ---+--+1010 |01|0123456789|10
+   0|0123456789|01|0
++42|0123456789|01|101010
+-42|0123456789|01|-101010
+7f|0123456789abcdef|0123456789|127
+zz|abcdefghijklmnopqrstuvwxyz|0123456789|675
+1010abc|01|0123456789|10
+--2A|0123456789ABCDEF|0123456789|42
+-101010|01|0123456789ABCDEF|-2A
+p|poneyvif|0123456789|0
+yen|poneyvif|0123456789|282
+255|0123456789|poneyvif|eff
+42|0123456789|0123456789abcdef|2a
+-15|0123456789|0123456789abcdef|-f
+0010|01|0123456789|2
+cba|abc|0123456789|21
+42|0123456789|@#$%|$$$
+1Z|0123456789|01|1
+
+[ex05_split]
+"  hello  world  " | " "   | hello,world
+"a,,b;;;c"         | ",;"  | a,b,c
+""                 | " ,"  | 
+"xxx"              | "x"   | 
+"one--two---three" | "-"   | one,two,three
+"42born2code"      | "0123456789" | born,code
+"  , ,a, ,b, , "   | " ,"  | a,b
+"|||alpha||beta|"  | "|"   | alpha,beta
+"\t tab\tbreaks "  | "\t " | tab,breaks
+"no-seps"          | ";"   | no-seps
