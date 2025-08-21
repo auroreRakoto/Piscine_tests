@@ -71,7 +71,7 @@ static void test_ex04(void)
 		return;
 	for (int i = 0; i < 3; ++i)
 	{
-		assert_size_eq((size_t)tab[i].size, strlen(av[i]), "ex04 size ok");
+		assert_int_eq((size_t)tab[i].size, strlen(av[i]), "ex04 size ok");
 		assert_str_eq(tab[i].str, av[i], "ex04 str points to input");
 		assert_true(tab[i].copy != NULL, "ex04 copy non-NULL");
 		assert_str_eq(tab[i].copy, av[i], "ex04 copy matches");
