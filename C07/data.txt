@@ -20,7 +20,7 @@ ABC
 1|hello|,|hello
 3|a,b,c|,|a,b,c
 3|a,b,c|--|a--b--c
-2|foo,bar,baz| + |foo + bar
+2|foo,bar,baz| + |foo+bar
 
 [ex04_convert_base]
 1010|01|0123456789|10
