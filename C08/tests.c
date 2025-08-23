@@ -1,6 +1,7 @@
 #include "../common/assert.h"
 #include "../common/data.h"
 #include "../common/list_helpers.h"
+#include "ft_stock_str.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
